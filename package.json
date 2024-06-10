@@ -1,0 +1,22 @@
+{
+  "name": "05-noc-app",
+  "version": "1.0.0",
+  "description": "A NOC App to practice about Clean Code and Dependency Injection",
+  "main": "index.js",
+  "scripts": {
+    "dev": "tsnd --respawn --clear src/app.ts",
+    "build": "rimraf ./dist && tsc",
+    "start": "npm run build && node dist/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.14.2",
+    "rimraf": "^5.0.7",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "cron": "^3.1.7"
+  }
+}
