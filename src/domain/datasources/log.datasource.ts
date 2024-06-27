@@ -1,17 +1,6 @@
-export enum LogSeverityLevel {
-  low = 'low',
-  medium = 'medium',
-  high = 'high',
-}
+import { LogEntity, LogSeverityLevel } from '../entities/log.entity';
 
-export class LogEntity {
-  public level: LogSeverityLevel;
-  public message: string;
-  public createdAt: Date;
-
-  constructor(message: string, level: LogSeverityLevel) {
-    this.message = message;
-    this.level = level;
-    this.createdAt = new Date();
-  }
+export abstract class LogDataSource {
+  abstract saveLog(log: LogEntity): Promise<void>;
+  abstract getLogs(severityLeveL: LogSeverityLevel): Promise<LogEntity[]>;
 }
