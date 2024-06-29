@@ -1,33 +1,24 @@
-import { CheckService } from '../domain/use-cases/checks/check-service';
+import { SendEmailLogs } from '../domain/use-cases/email/send-logs';
 import { FileSystemDataSource } from '../infrastructure/datasources/file-system.datasource';
 import { LogRepositoryImpl } from '../infrastructure/repositories/log.respository';
-import { CronService } from './cron/cron-service';
 import { EmailService } from './email/email.service';
 
 const fileSystemRepository = new LogRepositoryImpl(new FileSystemDataSource());
-
+const emailService = new EmailService();
 export class Server {
   constructor() {}
 
   public static start() {
     console.log('Server Started');
 
-    const emailService = new EmailService();
-
-    emailService.sendEmail({
-      to: 'juanariasortez@gmail.com',
-      subject: 'Testing',
-      htmlBody: `
-      
-      <h3> Logs de Sistema NOC</h3>
-      <p>
-      
-      Texto
-      </p>
-      <p>Ver logs adjuntos</p>
-      
-      `,
-    });
+    // new SendEmailLogs(emailService, fileSystemRepository).execute([
+    //   'juanariasortez@gmail.com',
+    //   'juan.arias@unitec.edu',
+    // ]);
+    // emailService.sendEmailWithFileSystemLogs([
+    //   'juanariasortez@gmail.com',
+    //   'juan.arias@unitec.edu',
+    // ]);
 
     // CronService.createJob('*/5 * * * * *', () => {
     //   new CheckService(
