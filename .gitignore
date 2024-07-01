@@ -3,3 +3,4 @@ dist/
 outputs/
 logs/
 .env
+mongo/
