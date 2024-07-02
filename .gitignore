@@ -4,3 +4,4 @@ outputs/
 logs/
 .env
 mongo/
+postgres/
